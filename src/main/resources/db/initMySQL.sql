@@ -15,14 +15,3 @@ INSERT INTO customers VALUES
     (4, 'Mary', 'Public', 'ajay@luv2code.com'),
     (5, 'Maxwell', 'Dixon', 'max@luv2code.com');
 
-
---create table customers
---(
---	id int auto_increment,
---	first_name VARCHAR(45) not null,
---	last_name VARCHAR(45) null,
---	email VARCHAR(45) not null,
---	constraint customers_pk
---		primary key (id)
---);
-
