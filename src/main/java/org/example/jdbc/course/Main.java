@@ -1,7 +1,6 @@
 package org.example.jdbc.course;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -31,6 +30,9 @@ public class Main {
 				}
 				statement.executeUpdate(line);
 			}
+			// Увеличиваем цену книги на 5, если она меньше 30
+			statement.executeUpdate("UPDATE Books SET price = price + 5 WHERE price < 30");
+
 			// Создаем объект ResultSet и пробегаем по результирующему набору с выводом данных в консоль
 			ResultSet rs = null;
 			try {
