@@ -2,16 +2,12 @@ package org.example.jdbc.course.lesson5;
 
 import java.sql.*;
 
+import static org.example.jdbc.Jdbc.getNewConnection;
+
 public class MainLesson5 {
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
-		// Задаем параметры подключения
-		String url = "jdbc:mysql://localhost:3306/first_lesson";
-		String userName = "root";
-		String password = "1234";
-		Class.forName("com.mysql.jdbc.Driver");
-
 		// Создаем подключение и создаем объект типа Statement
-		try(Connection connection = DriverManager.getConnection(url, userName, password);
+		try(Connection connection = getNewConnection();
 		    Statement stat = connection.createStatement()) {
 
 			// Записываем команды создания новой таблицы и ее наполнения в строковые переменные
@@ -34,7 +30,7 @@ public class MainLesson5 {
 			stat.executeUpdate(command3);
 			stat.executeUpdate(command4);
 			// Сохраняем результаты выполнения транзакции
-			connection.commit();
+//			connection.commit();
 
 			// Отменяем транзакции
 			connection.rollback(spt);
