@@ -75,7 +75,13 @@ public class MainLesson6 {
 				// phantom read
 //                conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED); // чтение разрешено
 				conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE); // чтение заблокировано
-				stat.executeUpdate("INSERT INTO Books (name, price) VALUES ('new Book', 10)");
+				stat.executeUpdate("INSERT INTO Books (name, price) VALUES ('new Book', 10)", Statement.RETURN_GENERATED_KEYS);
+				ResultSet keys = stat.getGeneratedKeys();
+				int lastKey = 1;
+				while (keys.next()) {
+					lastKey = keys.getInt(1);
+				}
+				System.out.println("Last Key: " + lastKey);
 				conn.commit();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
